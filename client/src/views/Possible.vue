@@ -1,12 +1,27 @@
 <template>
-    <v-app>
-        <possible-layout />
-    </v-app>
+    <div>
+        asddsad
+        <PossibleHeader />
+        <PossibleMain />
+        <PossibleModal />
+    </div>
 </template>
+
 <script>
-import PossibleLayout from '../layouts/possible/Index'
+import PossibleHeader from '@/components/Possible/PossibleHeader.vue'
+import PossibleMain from '@/components/Possible/PossibleMain.vue'
+import PossibleModal from '@/components/Possible/PossibleModal.vue'
+
 export default {
-    name: '',
-    components: { PossibleLayout }
+    name: 'Possible',
+
+    components: {
+        PossibleHeader,
+        PossibleMain,
+        PossibleModal
+    },
+    data() {
+        return {}
+    }
 }
 </script>

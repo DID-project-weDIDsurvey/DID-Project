@@ -113,7 +113,7 @@
     </v-sheet>
 </template>
 <script>
-import DefaultBar from '../layouts/default/Navbar.vue'
+import DefaultBar from '../components/Main/Navbar.vue'
 export default {
     name: '',
     components: { DefaultBar },
@@ -290,5 +290,9 @@ export default {
     100% {
         left: 48%;
     }
+}
+
+.bg-primary {
+    background-color: #9568fd;
 }
 </style>

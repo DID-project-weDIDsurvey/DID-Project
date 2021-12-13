@@ -6,7 +6,6 @@ import getWeb3 from '@/service/getWeb3'
 import pollWeb3 from '@/service/pollWeb3'
 // import getContract from '@/service/getContract'
 // import getContract1 from '@/service/getContract1'
-
 // import justWeb3 from '@/service/justWeb3'
 
 Vue.use(Vuex)

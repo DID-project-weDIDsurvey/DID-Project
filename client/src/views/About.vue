@@ -10,7 +10,7 @@
                         블록체인 기반 맞춤 설문조사 플랫폼 weDIDsurvey
                     </h1>
                     <img
-                        src="../assets/img/about/brand_concept.png"
+                        src="@/assets/images/about/about0.png"
                         alt=""
                         width="auto"
                         height="60px"
@@ -39,7 +39,7 @@
                 <v-img
                     transition="scale-transition"
                     width="350"
-                    src="@/assets/img/main/Money.png"
+                    src="@/assets/images/about/about1.png"
                 />
             </v-col>
         </v-row>
@@ -48,7 +48,7 @@
                 <v-img
                     transition="scale-transition"
                     width="350"
-                    src="@/assets/img/security.png"
+                    src="@/assets/images/about/about2.png"
                 />
             </v-col>
             <v-col align="center" class="pa-6">
@@ -85,7 +85,7 @@
                 <v-img
                     transition="scale-transition"
                     width="350"
-                    src="@/assets/img/surveyP.png"
+                    src="@/assets/images/about/about3.png"
                 />
             </v-col>
         </v-row>
