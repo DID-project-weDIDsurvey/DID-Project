@@ -96,7 +96,7 @@
 
 <script>
 import SurveyModal from './Modal.vue'
-import vc from '../possible/vc.json'
+import vc from '@/assets/vc/vc.json'
 import getContract from '@/service/getContract'
 export default {
     name: 'MainSurvey',

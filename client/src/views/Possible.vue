@@ -1,6 +1,5 @@
 <template>
     <div>
-        asddsad
         <PossibleHeader />
         <PossibleMain />
         <PossibleModal />

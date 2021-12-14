@@ -9,9 +9,7 @@ import Company from '../views/Company.vue'
 import Encrypt from '../views/Encrypt.vue'
 import MyPage from '../views/MyPage.vue'
 import About from '../views/About.vue'
-
-// import DefaultLayout from '../layouts/default/Index'
-import DefaultLayout from '../layouts/Index'
+import DefaultLayout from '../layouts/default/Index'
 
 Vue.use(VueRouter)
 

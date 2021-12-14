@@ -303,8 +303,8 @@
 </template>
 <script>
 import { Icon } from '@iconify/vue2'
-import MypageModal from './Modal.vue'
-import ReservedSurveyModal from './ReservedSurveyModal.vue'
+import MypageModal from '@/components/mypage/Modal.vue'
+import ReservedSurveyModal from '@/components/mypage/ReservedSurveyModal.vue'
 
 export default {
     components: { Icon, MypageModal, ReservedSurveyModal },

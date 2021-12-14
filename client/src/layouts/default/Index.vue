@@ -9,8 +9,8 @@
     </v-app>
 </template>
 <script>
-import DefaultNavBar from './default/Navbar'
-import DefaultFooter from './default/Footer'
+import DefaultNavBar from './Navbar'
+import DefaultFooter from './Footer'
 
 export default {
     name: 'DefaultLayout',

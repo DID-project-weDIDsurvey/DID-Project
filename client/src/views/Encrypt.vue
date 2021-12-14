@@ -1,7 +1,6 @@
 <template>
     <div>
-        <ProfileHeader />
-
+        <MyPageHeader />
         <!-- 유저 프로필 상세 내용 -->
         <v-row>
             <v-col sm="10" offset-sm="1" md="8" offset-md="2">
@@ -51,14 +50,14 @@
 </template>
 <script>
 // import MyPond from '@/components/Cards/MyPond'
-import ProfileHeader from '@/layouts/mypage/ProfileHeader'
+import MyPageHeader from '@/components/mypage/MyPageHeader'
 import vc from '@/assets/vc/vc.json'
 import { mapState } from 'vuex'
 // import getContract2 from '@/service/getContract2'
 
 export default {
     name: '',
-    components: { ProfileHeader },
+    components: { MyPageHeader },
     data() {
         return {
             sampleData: 'abc',
