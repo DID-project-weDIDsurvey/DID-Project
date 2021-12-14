@@ -209,7 +209,7 @@
     </div>
 </template>
 <script>
-import DialogScroll from '@/components/Company/DialogScroll.vue'
+import DialogScroll from '@/components/company/DialogScroll.vue'
 
 export default {
     name: 'CompanyView',

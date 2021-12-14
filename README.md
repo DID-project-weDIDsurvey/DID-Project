@@ -1,4 +1,4 @@
-## DID-Project
+## DID-Project 리팩토리 중입니다.
 
 ### 프로젝트 개요
 

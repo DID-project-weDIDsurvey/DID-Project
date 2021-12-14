@@ -1,142 +1,122 @@
 <template>
-    <!-- 메인 외 나머지 navbar -->
-    <v-tabs color="white" height="55" class="navElevation">
-        <!-- 네비바 왼쪽 부분 -->
-        <router-link class="text-decoration-none" to="/">
-            <v-toolbar-title class="font-weight-bold black--text mt-4 ml-7">
-                {{ title }}
-            </v-toolbar-title>
-        </router-link>
-        <!-- 네비바 중간 채우기 -->
-        <v-spacer></v-spacer>
-
-        <!-- 네비바 오른쪽 부분 2 : 화면이 클 때 -->
-        <v-tabs-slider color="hsl(258, 98%, 70%)"></v-tabs-slider>
-        <span
-            to="mypage"
-            text
-            class=" mr-2 mt-1 black--text"
-            v-if="this.loginStatus == true"
-        >
-            <v-avatar class="avatar2" size="40" color="#ff8bbd">
-                <img src="@/assets/img/profile.jpg" alt="John" />
-            </v-avatar>
+    <div>
+        <v-tabs height="55">
+            <!-- 네비바 왼쪽 타이틀 -->
+            <router-link class="text-decoration-none" to="/">
+                <v-toolbar-title class="font-weight-bold black--text mt-4 ml-7">
+                    {{ title }}
+                </v-toolbar-title>
+            </router-link>
+            <!-- 네비바 중간 채우기 -->
+            <v-spacer></v-spacer>
+            <!-- 네비바 개인 주소 -->
             <v-chip
-                class="address2 pl-7 pr-4 pt-1"
-                color="#ff8bbd"
-                style="color:black;font-weight:bold"
+                @click="copyAddress"
+                class="px-10 mt-3 mr-3"
+                color="secondary"
+                v-if="this.loginStatus == true"
             >
-                {{
-                    `${this.$store.state.web3.coinbase.substr(0, 2)}  ...
-                                ${this.$store.state.web3.coinbase.substr(
-                                    38,
-                                    41
-                                )}`
-                }}
+                {{ truncatedUserAddress }}
             </v-chip>
-        </span>
-        <v-tab
-            to="about"
-            class="black--text text-none font-weight-bold whiteNav"
-        >
-            About
-        </v-tab>
-        <v-tab
-            to="company"
-            text
-            plain="false"
-            class="black--text font-weight-bold whiteNav navAddress"
-            v-if="
-                this.$store.state.web3.coinbase ==
-                    0x68993b9454F760E81C8E7630aCE72b3638F6F6F7
-            "
-        >
-            설문결과
-        </v-tab>
-        <v-tab to="possible" text class="whiteNav black--text font-weight-bold">
-            설문참여
-        </v-tab>
-        <v-tab to="trade" text class="whiteNav black--text font-weight-bold">
-            쿠폰교환
-        </v-tab>
-        <v-tab
-            text
-            class="whiteNav black--text font-weight-bold"
-            @click="login()"
-            v-if="this.loginStatus == false"
-        >
-            지갑연결
-        </v-tab>
+            <!-- 네비바 메뉴들 -->
+            <v-tabs-slider color="hsl(258, 98%, 70%)"> </v-tabs-slider>
 
-        <v-tab
-            to="mypage"
-            text
-            class="whiteNav black--text font-weight-bold"
-            v-if="this.loginStatus == true"
-        >
-            마이페이지
-        </v-tab>
-
-        <v-tab
-            text
-            class="whiteNav black--text font-weight-bold"
-            @click="logout()"
-            v-if="this.loginStatus == true"
-        >
-            로그아웃
-        </v-tab>
-    </v-tabs>
+            <v-tab
+                v-for="(tab, idx) in tabList"
+                :key="idx"
+                class="black--text text-none font-weight-bold"
+                @click="tab.click"
+            >
+                {{ tab.desc }}
+            </v-tab>
+        </v-tabs>
+    </div>
 </template>
-
 <script>
 module.exports = {
-    name: 'DefaultBar2',
+    name: 'DefaultBar',
+    data() {
+        return {
+            title: 'weDIDsurvey',
+            tabList: [
+                {
+                    name: 'about',
+                    desc: 'About',
+                    click: () => this.$router.push('about'),
+                    isActive: true
+                },
+                {
+                    name: 'company',
+                    desc: '설문결과',
+                    click: () => this.$router.push('company'),
+                    isActive:
+                        this.$store.state.web3.coinbase ===
+                        0x68993b9454f760e81c8e7630ace72b3638f6f6f7
+                },
+                {
+                    name: 'possible',
+                    desc: '설문참여',
+                    click: () => this.$router.push('possible'),
+                    isActive: true
+                },
+                {
+                    name: 'trade',
+                    desc: '쿠폰교환',
+                    click: () => this.$router.push('trade'),
+                    isActive: true
+                },
+                {
+                    name: 'login',
+                    desc: '로그인',
+                    click: () => this.login(),
+                    isActive: true
+                },
+                {
+                    name: 'mypage',
+                    desc: '마이페이지',
+                    click: () => this.$router.push('mypage'),
+                    isActive: true
+                },
+                {
+                    name: 'logout',
+                    desc: '로그아웃',
+                    click: () => this.logout(),
+                    isActive: true
+                }
+            ]
+        }
+    },
+    mounted() {
+        console.table(this.tabList)
+        console.log(this.loginStatus)
+    },
     computed: {
         loginStatus() {
             return this.$store.state.loginStatus
-        }
-    },
-    data() {
-        return {
-            title: 'weDIDsurvey'
+        },
+        truncatedUserAddress() {
+            return (
+                this.$store.state.web3.coinbase.slice(0, 2) +
+                ' ... ' +
+                this.$store.state.web3.coinbase.slice(38, 42)
+            )
         }
     },
     methods: {
+        async copyAddress() {
+            try {
+                const userAddress = this.$store.state.web3.coinbase
+                await navigator.clipboard.writeText(userAddress)
+            } catch (err) {}
+        },
         async login() {
-            console.log('login click')
             await this.$store.dispatch('registerWeb3')
             this.$store.commit('loginStatus', true)
         },
         logout() {
-            console.log('logout click')
             this.$store.commit('loginStatus', false)
         }
     }
 }
 </script>
-<style>
-.avatar2 {
-    position: fixed;
-    left: 58.1rem;
-    top: 0.51rem;
-    z-index: 1;
-    border: 4px solid #7ad9ff;
-}
-
-.address2 {
-    top: 0.5rem;
-}
-
-.whiteNav {
-    top: 2px;
-}
-
-.navAddress {
-    left: 2px;
-}
-
-.navElevation {
-    box-shadow: 0px 0px 5px 0px;
-    z-index: 1;
-}
-</style>
+<style scoped></style>

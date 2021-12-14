@@ -113,7 +113,7 @@
     </v-sheet>
 </template>
 <script>
-import DefaultBar from '../components/Main/Navbar.vue'
+import DefaultBar from '@/components/main/Navbar.vue'
 export default {
     name: '',
     components: { DefaultBar },

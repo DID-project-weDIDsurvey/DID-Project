@@ -1,4 +1,5 @@
 <template>
+    <!-- 이미지 경로 처리 미완료 -->
     <v-container class="mt-16">
         <v-row no-gutters align="center">
             <v-col align="center">

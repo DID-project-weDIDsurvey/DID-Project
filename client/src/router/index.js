@@ -10,7 +10,7 @@ import Encrypt from '../views/Encrypt.vue'
 import MyPage from '../views/MyPage.vue'
 import About from '../views/About.vue'
 import DefaultLayout from '../layouts/default/Index'
-
+import Test from '@/views/Test'
 Vue.use(VueRouter)
 
 const routes = [
@@ -23,6 +23,10 @@ const routes = [
         path: '/',
         component: DefaultLayout,
         children: [
+            {
+                path: '/test',
+                component: Test
+            },
             {
                 path: '/possible',
                 name: '설문조사 참여 페이지',

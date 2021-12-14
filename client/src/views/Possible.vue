@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import PossibleHeader from '@/components/Possible/PossibleHeader.vue'
-import PossibleMain from '@/components/Possible/PossibleMain.vue'
-import PossibleModal from '@/components/Possible/PossibleModal.vue'
+import PossibleHeader from '@/components/possible/PossibleHeader.vue'
+import PossibleMain from '@/components/possible/PossibleMain.vue'
+import PossibleModal from '@/components/possible/PossibleModal.vue'
 
 export default {
     name: 'Possible',
