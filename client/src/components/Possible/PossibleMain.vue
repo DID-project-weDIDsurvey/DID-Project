@@ -1,44 +1,6 @@
 <template>
     <v-container fluid class="pa-0">
         <v-row no-gutters>
-            <!-- 왼쪽 layout -->
-            <v-col
-                cols="6"
-                md="2"
-                class="possible-bg-color"
-                style="padding-top:10px"
-            >
-                <v-row justify="center" class="pa-0">
-                    <v-col cols="2" sm="12" md="10" lg="10">
-                        <v-sheet elevation="3">
-                            <v-sheet
-                                class="pa-3  text-left white--text"
-                                color="#7b45fd"
-                                light
-                            >
-                                <span>카테고리</span>
-                            </v-sheet>
-                            <div class="pa-4">
-                                <v-chip-group
-                                    active-class="pink accent-1"
-                                    column
-                                >
-                                    <v-chip
-                                        color="#7b45fd"
-                                        class="white--text"
-                                        v-for="tag in tags"
-                                        :key="tag"
-                                        @click="category"
-                                    >
-                                        {{ tag }}
-                                    </v-chip>
-                                </v-chip-group>
-                            </div>
-                        </v-sheet>
-                    </v-col>
-                </v-row>
-            </v-col>
-            <!-- 오른쪽 layout -->
             <v-col cols="12" sm="10" ma="4">
                 <!-- <v-btn color="purple lighten-1" dark @click="decrypt()">복호화</v-btn> -->
 
@@ -400,18 +362,6 @@ export default {
                     this.$set(item, 'isShow', false)
                 })
                 this.surveys = res
-            })
-        },
-
-        async category() {
-            await this.$api('/surveys', 'get').then(res => {
-                res.forEach(item => {
-                    for (var tag of this.tags) {
-                        if ((tag[0] === item.survey_id) === 3) {
-                            this.surveyCategory.push(item)
-                        }
-                    }
-                })
             })
         },
 

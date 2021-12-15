@@ -16,34 +16,6 @@ export default {
                 })
             ).data
         },
-        async $get(url) {
-            return (
-                await axios.get(url).catch(e => {
-                    console.log(e)
-                })
-            ).data
-        },
-        async $post(url, data) {
-            return (
-                await axios.post(url, data).catch(e => {
-                    console.log(e)
-                })
-            ).data
-        },
-        async $put(url, data) {
-            return (
-                await axios.put(url, data).catch(e => {
-                    console.log(e)
-                })
-            ).data
-        },
-        async $del(url) {
-            return (
-                await axios.delete(url).catch(e => {
-                    console.log(e)
-                })
-            ).data
-        },
         async $upload(url, file, description) {
             const formData = new FormData()
             formData.append('attachment', file)

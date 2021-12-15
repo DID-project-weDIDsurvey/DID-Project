@@ -1,12 +1,14 @@
 <template>
     <div>
-        ㅁㄴㅇㄴㅁㅇ
+        <Banner />
     </div>
 </template>
+
 <script>
+import Banner from '@/components/any/Banner'
 export default {
     name: '',
-    components: {},
+    components: { Banner },
     data() {
         return {
             sampleData: ''

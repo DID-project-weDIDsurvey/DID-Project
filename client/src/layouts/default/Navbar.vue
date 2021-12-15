@@ -26,6 +26,7 @@
                 :key="idx"
                 class="black--text text-none font-weight-bold"
                 @click="tab.click"
+                v-show="tab.isActive"
             >
                 {{ tab.desc }}
             </v-tab>
@@ -49,9 +50,7 @@ module.exports = {
                     name: 'company',
                     desc: '설문결과',
                     click: () => this.$router.push('company'),
-                    isActive:
-                        this.$store.state.web3.coinbase ===
-                        0x68993b9454f760e81c8e7630ace72b3638f6f6f7
+                    isActive: true
                 },
                 {
                     name: 'possible',
@@ -75,20 +74,16 @@ module.exports = {
                     name: 'mypage',
                     desc: '마이페이지',
                     click: () => this.$router.push('mypage'),
-                    isActive: true
+                    isActive: false
                 },
                 {
                     name: 'logout',
                     desc: '로그아웃',
                     click: () => this.logout(),
-                    isActive: true
+                    isActive: false
                 }
             ]
         }
-    },
-    mounted() {
-        console.table(this.tabList)
-        console.log(this.loginStatus)
     },
     computed: {
         loginStatus() {
@@ -112,9 +107,16 @@ module.exports = {
         async login() {
             await this.$store.dispatch('registerWeb3')
             this.$store.commit('loginStatus', true)
+
+            this.tabList[4].isActive = !this.tabList[4].isActive
+            this.tabList[5].isActive = !this.tabList[5].isActive
+            this.tabList[6].isActive = !this.tabList[6].isActive
         },
         logout() {
             this.$store.commit('loginStatus', false)
+            this.tabList[4].isActive = !this.tabList[4].isActive
+            this.tabList[5].isActive = !this.tabList[5].isActive
+            this.tabList[6].isActive = !this.tabList[6].isActive
         }
     }
 }

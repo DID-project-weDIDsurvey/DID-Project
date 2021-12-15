@@ -6,7 +6,7 @@ Vue.use(Vuetify)
 
 const theme = {
     primary: colors.grey,
-    secondary: '#9568fd'
+    secondary: colors.deepPurple.accent2
 }
 
 export default new Vuetify({
