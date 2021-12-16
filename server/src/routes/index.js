@@ -34,7 +34,7 @@ router.post("/questions", questionController.showById);
 router.post("/answers", answerController.store);
 
 // img call
-router.get("/download/:fileName", downloadController.index);
+router.get("/download/:fileName", downloadController.index2);
 router.post("/download/:fileName", downloadController.store);
 
 //trade controller

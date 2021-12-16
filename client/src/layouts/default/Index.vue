@@ -26,3 +26,8 @@ export default {
     // }
 }
 </script>
+<style scoped>
+.outLine {
+    border: 5px solid black;
+}
+</style>

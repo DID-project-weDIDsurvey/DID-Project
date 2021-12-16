@@ -20,7 +20,7 @@ const store = (req, res, next) => {
     console.log("store");
     // Remember, the middleware will call it's next function
     // so we can inject our controller manually as the next(
-        
+
     // /download , upload(), (req, res) ..
     upload.single("attachment")(req, res, async () => {
         const file = req.file;
@@ -44,25 +44,24 @@ const store = (req, res, next) => {
     });
 };
 
-const index2 = (request, res) => {
-    const { fileName } = request.params;
-    // const filepath = `${__dirname}/../../uploads/${fileName}`;
+const index2 = (req, res) => {
+    const fileName = req.params.fileName;
 
-    res.header(
-        "Content-Type",
-        `image/${fileName.substring(fileName.lastIndexOf("."))}`
-    );
-    // console.log("after", res.header());
-    // 'content-type': [ 'Content-Type', 'image/.jpg' ]
+    const filePath =
+        "C:/Projects/DID-Project/server/src/uploads/" + `${fileName}`;
 
-    if (!fs.existsSync(filepath))
-        res.send(404, {
+    console.log(filePath);
+
+    if (!fs.existsSync(filePath)) {
+        console.log("error");
+
+        res.status(404).send({
             error: "Can not found file.",
         });
-    else {
-        //파일을 클라이언트에 내려주는것
-        fs.createReadStream(filepath).pipe(res);
+    } else {
+        res.header("Content-Type", `image/png`);
+        fs.createReadStream(filePath).pipe(res);
     }
 };
 
-module.exports = { index, store };
+module.exports = { index, index2, store };

@@ -3,7 +3,7 @@
         <v-row align="center" justify="center">
             <v-col cols="10">
                 <v-sheet elevation="3">
-                    <v-sheet class="pa-3 white--text" color="#7b45fd">
+                    <v-sheet class="pa-3 white--text" color="secondary">
                         <span>카테고리</span>
                     </v-sheet>
                     <div class="pa-4">

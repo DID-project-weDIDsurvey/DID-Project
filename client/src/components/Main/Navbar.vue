@@ -1,40 +1,30 @@
 <template>
-    <!-- 메인 navbar -->
     <div>
-        <v-app-bar elevation="0" color="transparent" class="mt-3">
+        <!-- 메인 네비게이션 바 -->
+        <v-app-bar elevation="0" color="transparent">
+            <!-- 네비바 왼쪽 로고 -->
             <router-link class="text-decoration-none" to="/">
-                <v-toolbar-title class="font-weight-bold white--text">
+                <v-toolbar-title class="font-weight-bold white--text ml-4">
                     {{ title }}
                 </v-toolbar-title>
             </router-link>
+            <!-- 네비바 중간 채우기 -->
             <v-spacer></v-spacer>
 
-            <!-- 네비바 오른쪽 부분 2 : 화면이 클 때 -->
-            <v-toolbar-items class="hidden-xs-only">
+            <v-toolbar-items>
                 <span
                     to="mypage"
                     text
                     class="py-2 mr-2 mt-1 white--text"
                     v-if="this.loginStatus == true"
                 >
-                    <v-avatar class="avatar" size="40">
-                        <img src="@/assets/img/profile.jpg" alt="John" />
-                    </v-avatar>
                     <v-chip
-                        class="address pl-7 pr-4 pt-2"
-                        color="#Fee440"
-                        style="color:black;font-weight:bold"
+                        @click="copyAddress"
+                        class="px-10 mt-3 mr-3"
+                        color="white"
+                        v-if="this.loginStatus == true"
                     >
-                        {{
-                            `${this.$store.state.web3.coinbase.substr(
-                                0,
-                                6
-                            )}  ...
-                                ${this.$store.state.web3.coinbase.substr(
-                                    38,
-                                    41
-                                )}`
-                        }}
+                        {{ truncatedUserAddress }}
                     </v-chip>
                 </span>
                 <v-btn to="about" text class="white--text text-none">
@@ -91,28 +81,96 @@
 
 <script>
 module.exports = {
-    name: 'DefaultBar',
-    computed: {
-        loginStatus() {
-            return this.$store.state.loginStatus
-        }
-    },
+    name: 'MainNavBar',
+
     data() {
         return {
             title: 'weDIDsurvey',
-            decryptVc: []
+            tabList: [
+                {
+                    name: 'about',
+                    desc: 'About',
+                    click: () => this.$router.push('about'),
+                    isActive: true
+                },
+                {
+                    name: 'company',
+                    desc: '설문결과',
+                    click: () => this.$router.push('company'),
+                    isActive: true
+                },
+                {
+                    name: 'possible',
+                    desc: '설문참여',
+                    click: () => this.$router.push('possible'),
+                    isActive: true
+                },
+                {
+                    name: 'trade',
+                    desc: '쿠폰교환',
+                    click: () => this.$router.push('trade'),
+                    isActive: true
+                },
+                {
+                    name: 'login',
+                    desc: '로그인',
+                    click: () => this.login(),
+                    isActive: true
+                },
+                {
+                    name: 'mypage',
+                    desc: '마이페이지',
+                    click: () => this.$router.push('mypage'),
+                    isActive: false
+                },
+                {
+                    name: 'logout',
+                    desc: '로그아웃',
+                    click: () => this.logout(),
+                    isActive: false
+                }
+            ],
+            decryptedVC: null
         }
     },
+
+    computed: {
+        loginStatus() {
+            return this.$store.state.loginStatus
+        },
+        truncatedUserAddress() {
+            return (
+                this.$store.state.web3.coinbase.slice(0, 2) +
+                ' ... ' +
+                this.$store.state.web3.coinbase.slice(38, 42)
+            )
+        }
+    },
+
     methods: {
+        // 네비게이션 개인주소 chip 클릭 시 주소가 copy
+        async copyAddress() {
+            try {
+                const userAddress = this.$store.state.web3.coinbase
+                await navigator.clipboard.writeText(userAddress)
+            } catch (err) {}
+        },
+        // 메타마스크 로그인
         async login() {
-            console.log('login click')
             await this.$store.dispatch('registerWeb3')
             this.$store.commit('loginStatus', true)
             this.decrypt()
+
+            this.tabList[4].isActive = !this.tabList[4].isActive
+            this.tabList[5].isActive = !this.tabList[5].isActive
+            this.tabList[6].isActive = !this.tabList[6].isActive
         },
+        // 메타마스크 로그아웃
         logout() {
-            console.log('logout click')
             this.$store.commit('loginStatus', false)
+            this.tabList[4].isActive = !this.tabList[4].isActive
+            this.tabList[5].isActive = !this.tabList[5].isActive
+            this.tabList[6].isActive = !this.tabList[6].isActive
         },
 
         // Local Storage에서 암호화 VC 파일을 불러서 복호화 한다
@@ -134,12 +192,3 @@ module.exports = {
     }
 }
 </script>
-<style>
-.avatar {
-    position: fixed;
-    left: 1.2rem;
-    bottom: 0.01rem;
-    z-index: 1;
-    border: 4px solid #ffd233;
-}
-</style>

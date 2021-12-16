@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+// main home page
 import Home from '../views/Main.vue'
+// other page view layout
+import DefaultLayout from '../layouts/default/Index'
+// default layout view components
 import Possible from '../views/Possible.vue'
 import Survey from '../views/Survey.vue'
 import Trade from '../views/Trade.vue'
@@ -9,8 +13,8 @@ import Company from '../views/Company.vue'
 import Encrypt from '../views/Encrypt.vue'
 import MyPage from '../views/MyPage.vue'
 import About from '../views/About.vue'
-import DefaultLayout from '../layouts/default/Index'
-import Test from '@/views/Test'
+import Test from '../views/Test'
+
 Vue.use(VueRouter)
 
 const routes = [

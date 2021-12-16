@@ -1,37 +1,7 @@
 <template>
-    <v-container fluid class="pa-0">
+    <v-container fluid>
         <v-row no-gutters>
-            <v-col cols="12" sm="10" ma="4">
-                <!-- <v-btn color="purple lighten-1" dark @click="decrypt()">복호화</v-btn> -->
-
-                <!-- 지갑 연결 전 참여가능한 설문 버튼 누르면 modal창 뜬다 -->
-                <v-dialog v-model="dialog" max-width="340">
-                    <v-card>
-                        <img
-                            class="metamaskCenter"
-                            width="50"
-                            src="@/assets/img/metamask.svg"
-                        />
-                        <br />
-                        <br />
-                        <v-card-text class="text-h6 text-center">
-                            지갑 연결 후 맞춤 설문 <br />확인이 가능합니다.
-                        </v-card-text>
-
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
-
-                            <v-btn
-                                color="blue darken-1"
-                                text
-                                @click=";[connectMask(), (dialog = false)]"
-                            >
-                                지갑 연결하기
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-dialog>
-
+            <v-col cols="12">
                 <v-container class="mb-5">
                     <v-bottom-navigation
                         :value="value"
@@ -50,7 +20,7 @@
                             @click="dialog = true"
                             v-if="this.loginStatus == false"
                         >
-                            <span>참여 가능한 설문</span>
+                            <span>{{ dialog }} asdsda참여 가능한 설문</span>
                         </v-btn>
 
                         <v-btn
@@ -170,17 +140,17 @@
                 </v-container>
             </v-col>
         </v-row>
-        <SurveyStartModal :surveymodalOfen="surveymodalOfen" @child="parents" />
+        <!-- <SurveyStartModal :surveymodalOfen="surveymodalOfen" @child="parents" /> -->
     </v-container>
 </template>
 
 <script>
-import SurveyStartModal from './SurveyStartModal.vue'
+// import SurveyStartModal from './SurveyStartModal.vue'
 
 export default {
     name: 'PossibleMain',
     components: {
-        SurveyStartModal
+        // SurveyStartModal
     },
     computed: {
         loginStatus() {
@@ -189,17 +159,7 @@ export default {
     },
     data() {
         return {
-            tags: [
-                '쇼핑',
-                '문화',
-                '자동차',
-                '음식',
-                '아트',
-                '주택',
-                '인터넷',
-                '전자제품'
-            ],
-            decryptVc: {},
+            decryptedVC: null,
             conditions: [],
             vcItemList: [],
             passSurveyList: [],
@@ -217,14 +177,13 @@ export default {
     },
     created() {
         this.getVC()
-        this.getSurvey()
-        this.discountDay()
-        this.getIsShow()
+        // this.getSurvey()
+        // this.discountDay()
+        // this.getIsShow()
     },
     mounted() {},
     unmounted() {},
     methods: {
-        // 제일 처음 모든 설문지 보여준다
         async getSurvey() {
             this.surveys = await this.$api('/surveys', 'get')
             this.getIsShow()
@@ -262,23 +221,18 @@ export default {
             this.conditions = await this.$api('/conditions', 'get')
         },
 
-        async connectMask() {
-            if (this.loginStatus === false) {
-                await this.$store.dispatch('registerWeb3')
-
-                this.$store.commit('loginStatus', true)
-            }
-        },
-
         // vcList.json에서 항목의 key/value를 가져와 vcItemList에 담기
         getVC: function() {
-            this.decryptVc = this.$store.state.decryptVc
+            this.decryptedVC = this.$store.state.decryptVc
+
+            console.log(this.decryptedVC)
+
             for (
                 var i = 0;
-                i < this.decryptVc.verifiableCredentials.data.length;
+                i < this.decryptedVC.verifiableCredentials.data.length;
                 i++
             ) {
-                const vcItem = this.decryptVc.verifiableCredentials.data[i]
+                const vcItem = this.decryptedVC.verifiableCredentials.data[i]
                     .credentialSubject.infomation.value
 
                 // 항목의 key와 value값 추출

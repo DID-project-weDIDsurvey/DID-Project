@@ -1,36 +1,41 @@
 <template>
     <div>
-        <v-tabs height="55">
+        <v-app-bar elevation="0" color="transparent" height="50">
             <!-- 네비바 왼쪽 타이틀 -->
             <router-link class="text-decoration-none" to="/">
-                <v-toolbar-title class="font-weight-bold black--text mt-4 ml-7">
+                <v-toolbar-title class="font-weight-bold black--text ml-7">
                     {{ title }}
                 </v-toolbar-title>
             </router-link>
             <!-- 네비바 중간 채우기 -->
             <v-spacer></v-spacer>
-            <!-- 네비바 개인 주소 -->
+            <!-- 네비바 개인주소 chip -->
             <v-chip
                 @click="copyAddress"
-                class="px-10 mt-3 mr-3"
+                class="px-10 mr-3"
                 color="secondary"
                 v-if="this.loginStatus == true"
             >
                 {{ truncatedUserAddress }}
             </v-chip>
             <!-- 네비바 메뉴들 -->
-            <v-tabs-slider color="hsl(258, 98%, 70%)"> </v-tabs-slider>
-
-            <v-tab
-                v-for="(tab, idx) in tabList"
-                :key="idx"
-                class="black--text text-none font-weight-bold"
-                @click="tab.click"
-                v-show="tab.isActive"
-            >
-                {{ tab.desc }}
-            </v-tab>
-        </v-tabs>
+            <v-sheet>
+                <v-tabs height="50" right>
+                    <!-- 네비바 메뉴 슬라이더 -->
+                    <v-tabs-slider color="secondary"></v-tabs-slider>
+                    <!-- 네비바 메뉴들 -->
+                    <v-tab
+                        v-for="(tab, idx) in tabList"
+                        :key="idx"
+                        class="black--text text-none font-weight-bold"
+                        @click="tab.click"
+                        v-show="tab.isActive"
+                    >
+                        {{ tab.desc }}
+                    </v-tab>
+                </v-tabs>
+            </v-sheet>
+        </v-app-bar>
     </div>
 </template>
 <script>
@@ -40,6 +45,12 @@ module.exports = {
         return {
             title: 'weDIDsurvey',
             tabList: [
+                {
+                    name: 'test',
+                    desc: 'Test',
+                    click: () => this.$router.push('test'),
+                    isActive: true
+                },
                 {
                     name: 'about',
                     desc: 'About',
@@ -108,15 +119,15 @@ module.exports = {
             await this.$store.dispatch('registerWeb3')
             this.$store.commit('loginStatus', true)
 
-            this.tabList[4].isActive = !this.tabList[4].isActive
             this.tabList[5].isActive = !this.tabList[5].isActive
             this.tabList[6].isActive = !this.tabList[6].isActive
+            this.tabList[7].isActive = !this.tabList[7].isActive
         },
         logout() {
             this.$store.commit('loginStatus', false)
-            this.tabList[4].isActive = !this.tabList[4].isActive
             this.tabList[5].isActive = !this.tabList[5].isActive
             this.tabList[6].isActive = !this.tabList[6].isActive
+            this.tabList[7].isActive = !this.tabList[7].isActive
         }
     }
 }
