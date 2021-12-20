@@ -1,9 +1,10 @@
 <template>
     <div>
+        <!-- 메인 네비게이션 바 -->
         <v-app-bar elevation="0" color="transparent" height="50">
             <!-- 네비바 왼쪽 타이틀 -->
             <router-link class="text-decoration-none" to="/">
-                <v-toolbar-title class="font-weight-bold black--text ml-7">
+                <v-toolbar-title class="font-weight-bold black--text ml-4">
                     {{ title }}
                 </v-toolbar-title>
             </router-link>
@@ -43,6 +44,7 @@ module.exports = {
     name: 'DefaultBar',
     data() {
         return {
+            decryptVC: null,
             title: 'weDIDsurvey',
             tabList: [
                 {
@@ -109,22 +111,29 @@ module.exports = {
         }
     },
     methods: {
+        // 네비게이션 개인주소 chip 클릭 시 주소가 copy
         async copyAddress() {
             try {
                 const userAddress = this.$store.state.web3.coinbase
                 await navigator.clipboard.writeText(userAddress)
             } catch (err) {}
         },
+        // 메타마스크 로그인
         async login() {
             await this.$store.dispatch('registerWeb3')
             this.$store.commit('loginStatus', true)
+            this.decrypt()
 
+            // 로그인 시 isActive 변경
             this.tabList[5].isActive = !this.tabList[5].isActive
             this.tabList[6].isActive = !this.tabList[6].isActive
             this.tabList[7].isActive = !this.tabList[7].isActive
         },
+        // 메타마스크 로그아웃
         logout() {
             this.$store.commit('loginStatus', false)
+
+            // 로그인 시 isActive 변경
             this.tabList[5].isActive = !this.tabList[5].isActive
             this.tabList[6].isActive = !this.tabList[6].isActive
             this.tabList[7].isActive = !this.tabList[7].isActive

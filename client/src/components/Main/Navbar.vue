@@ -1,8 +1,8 @@
 <template>
     <div>
         <!-- 메인 네비게이션 바 -->
-        <v-app-bar elevation="0" color="transparent">
-            <!-- 네비바 왼쪽 로고 -->
+        <v-app-bar elevation="0" color="transparent" height="50">
+            <!-- 네비바 왼쪽 타이틀 -->
             <router-link class="text-decoration-none" to="/">
                 <v-toolbar-title class="font-weight-bold white--text ml-4">
                     {{ title }}
@@ -10,71 +10,32 @@
             </router-link>
             <!-- 네비바 중간 채우기 -->
             <v-spacer></v-spacer>
-
-            <v-toolbar-items>
-                <span
-                    to="mypage"
-                    text
-                    class="py-2 mr-2 mt-1 white--text"
-                    v-if="this.loginStatus == true"
-                >
-                    <v-chip
-                        @click="copyAddress"
-                        class="px-10 mt-3 mr-3"
-                        color="white"
-                        v-if="this.loginStatus == true"
+            <!-- 네비바 개인주소 chip -->
+            <v-chip
+                @click="copyAddress"
+                class="px-10 mr-3"
+                color="secondary"
+                v-if="this.loginStatus == true"
+            >
+                {{ truncatedUserAddress }}
+            </v-chip>
+            <!-- 네비바 메뉴들 -->
+            <v-sheet>
+                <v-tabs height="50" right>
+                    <!-- 네비바 메뉴 슬라이더 -->
+                    <v-tabs-slider color="secondary"></v-tabs-slider>
+                    <!-- 네비바 메뉴들 -->
+                    <v-tab
+                        v-for="(tab, idx) in tabList"
+                        :key="idx"
+                        class="black--text text-none font-weight-bold"
+                        @click="tab.click"
+                        v-show="tab.isActive"
                     >
-                        {{ truncatedUserAddress }}
-                    </v-chip>
-                </span>
-                <v-btn to="about" text class="white--text text-none">
-                    About
-                </v-btn>
-                <v-btn
-                    to="company"
-                    text
-                    plain="false"
-                    class="white--text"
-                    v-if="
-                        this.$store.state.web3.coinbase ==
-                            0x68993b9454f760e81c8e7630ace72b3638f6f6f7f
-                    "
-                >
-                    설문결과
-                </v-btn>
-                <v-btn to="possible" text class="white--text">
-                    설문참여
-                </v-btn>
-                <v-btn to="trade" text class="white--text">
-                    쿠폰교환
-                </v-btn>
-                <v-btn
-                    text
-                    class="white--text"
-                    @click="login()"
-                    v-if="this.loginStatus == false"
-                >
-                    지갑연결
-                </v-btn>
-
-                <v-btn
-                    to="mypage"
-                    text
-                    class="white--text"
-                    v-if="this.loginStatus == true"
-                >
-                    마이페이지
-                </v-btn>
-
-                <v-btn
-                    text
-                    class="white--text"
-                    @click="logout()"
-                    v-if="this.loginStatus == true"
-                >
-                    로그아웃
-                </v-btn>
-            </v-toolbar-items>
+                        {{ tab.desc }}
+                    </v-tab>
+                </v-tabs>
+            </v-sheet>
         </v-app-bar>
     </div>
 </template>
@@ -82,9 +43,9 @@
 <script>
 module.exports = {
     name: 'MainNavBar',
-
     data() {
         return {
+            decryptVC: null,
             title: 'weDIDsurvey',
             tabList: [
                 {
@@ -129,11 +90,9 @@ module.exports = {
                     click: () => this.logout(),
                     isActive: false
                 }
-            ],
-            decryptedVC: null
+            ]
         }
     },
-
     computed: {
         loginStatus() {
             return this.$store.state.loginStatus
@@ -146,7 +105,6 @@ module.exports = {
             )
         }
     },
-
     methods: {
         // 네비게이션 개인주소 chip 클릭 시 주소가 copy
         async copyAddress() {
@@ -161,32 +119,24 @@ module.exports = {
             this.$store.commit('loginStatus', true)
             this.decrypt()
 
-            this.tabList[4].isActive = !this.tabList[4].isActive
+            // 로그인 시 isActive 변경
             this.tabList[5].isActive = !this.tabList[5].isActive
             this.tabList[6].isActive = !this.tabList[6].isActive
+            this.tabList[7].isActive = !this.tabList[7].isActive
         },
         // 메타마스크 로그아웃
         logout() {
             this.$store.commit('loginStatus', false)
-            this.tabList[4].isActive = !this.tabList[4].isActive
+
+            // 로그인 시 isActive 변경
             this.tabList[5].isActive = !this.tabList[5].isActive
             this.tabList[6].isActive = !this.tabList[6].isActive
+            this.tabList[7].isActive = !this.tabList[7].isActive
         },
-
-        // Local Storage에서 암호화 VC 파일을 불러서 복호화 한다
+        // Local Storage 내 VC data decript
         async decrypt() {
-            this.decryptVc = await window.ethereum.request({
-                method: 'eth_decrypt',
-                params: [
-                    localStorage.getItem('intoVp'),
-                    this.$store.state.web3.coinbase
-                ]
-            })
+            await this.$decrypt('intoVp')
 
-            // 복호화된 string VC를 다시 Json object로 바꾼다
-            this.vc = JSON.parse(this.decryptVc)
-            // 복호화 VC를 store에 저장
-            this.$store.commit('addDecryptVc', this.vc)
             this.getVC()
         }
     }
