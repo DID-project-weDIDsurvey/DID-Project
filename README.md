@@ -106,6 +106,7 @@ DID, Decentralized ID는 프로젝트는 사용자의 개인정보를 개인이 
 
 #### 프로젝트 발표 및 개발시연 영상
 
+[![IU(아이유) _ Into the I-LAND](http://img.youtube.com/vi/QYNwbZHmh8g/0.jpg)](https://youtu.be/QYNwbZHmh8g?t=0s)
 [![Video Label]](https://www.youtube.com/watch?v=XvaYc2APpUk)
 
 ---
