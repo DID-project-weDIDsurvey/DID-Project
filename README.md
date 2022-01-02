@@ -22,59 +22,58 @@ DID, Decentralized ID는 프로젝트는 사용자의 개인정보를 개인이 
 **3. 블록체인 기술을 통해 해결하고자 하는 과제**
 블록체인을 통한 탈중앙화 신원증명으로 마이데이터를 가능하게 하며, 신원인증 시 필요한 정보(VP)만을 골라서 제출하도록 합니다. 해당 기술을 활용해 저희 팀은 안전한 개인정보 자기관리와 안전한 개인정보 전달을 실현하고자 하며, 쉬운 패널자격검증이 가능함을 입증하려고 합니다.
 
+### 팀명 : 딩딩(DIng DIng)
 ### 팀원 소개
 
--   **팀명 : 딩딩(DIng DIng)**
+1. [PM/도희경](https://github.com/heekyungdo)
 
-    1. [PM/도희경](https://github.com/heekyungdo)
+-   담당역할 : 팀 리딩, 프론트엔드 및 기획
+-   업무내용 :
+    1. UI/UX 개발
+    2. web3를 이용한 메타마스크 연결
+    3. 메타마스크 연결시 사용자에게 맞춤 설문 연결
+    4. 클라이언트 사이드 API 요청
+    5. DID 서비스 및 시스템 모델 기획
 
-    -   담당역할 : 팀 리딩, 프론트엔드 및 기획
-    -   업무내용 :
-        1. UI/UX 개발
-        2. web3를 이용한 메타마스크 연결
-        3. 메타마스크 연결시 사용자에게 맞춤 설문 연결
-        4. 클라이언트 사이드 API 요청
-        5. DID 서비스 및 시스템 모델 기획
+2. [팀원/장태진](https://github.com/tejin3)
 
-    2. [팀원/장태진](https://github.com/tejin3)
+-   담당역할 : 컨트랙트 개발 및 풀스택 서포트
+-   업무내용 :
+    1. 스마트 컨트랙트 개발 및 연결
+    2. 메타마스크를 통한 메세지 암호화, 복호화 서비스
+    3. 메타마스크 연결시 사용자에게 맞춤 설문 연결
+    4. 서버사이드 SQL 작성
+    5. DID 서비스 및 시스템 모델 기획
 
-    -   담당역할 : 컨트랙트 개발 및 풀스택 서포트
-    -   업무내용 :
-        1. 스마트 컨트랙트 개발 및 연결
-        2. 메타마스크를 통한 메세지 암호화, 복호화 서비스
-        3. 메타마스크 연결시 사용자에게 맞춤 설문 연결
-        4. 서버사이드 SQL 작성
-        5. DID 서비스 및 시스템 모델 기획
+3. [팀원/정은경](https://github.com/luckyjek)
 
-    3. [팀원/정은경](https://github.com/luckyjek)
+-   담당역할 : 프론트엔드 및 기획
+-   업무내용 :
+    1. UI/UX 기획
+    2. 설문참여 가이드, 예약완료 모달창 제작
+    3. 서비스 메인 배너 제작
+    4. DID 서비스 및 시스템 모델 기획
 
-    -   담당역할 : 프론트엔드 및 기획
-    -   업무내용 :
-        1. UI/UX 기획
-        2. 설문참여 가이드, 예약완료 모달창 제작
-        3. 서비스 메인 배너 제작
-        4. DID 서비스 및 시스템 모델 기획
+4. [팀원/홍대의](https://github.com/HongDaeEui)
 
-    4. [팀원/홍대의](https://github.com/HongDaeEui)
+-   담당역할 : 프론트엔드 및 기획
+-   업무내용 :
+    1. DID 서비스 및 시스템 모델 기획
+    2. 설문조건과 유저VC 매칭 후 필터링 솔루션 개발
+    3. VC to VP 생성 솔루션 개발
+    4. 쿠폰/포인트 보상지급 및 상품교환, 설문찜하기 기능 개발
+    5. 클라이언트사이드 API 요청 개발
+    6. 서버사이드 SQL 작성
 
-    -   담당역할 : 프론트엔드 및 기획
-    -   업무내용 :
-        1. DID 서비스 및 시스템 모델 기획
-        2. 설문조건과 유저VC 매칭 후 필터링 솔루션 개발
-        3. VC to VP 생성 솔루션 개발
-        4. 쿠폰/포인트 보상지급 및 상품교환, 설문찜하기 기능 개발
-        5. 클라이언트사이드 API 요청 개발
-        6. 서버사이드 SQL 작성
+5. [팀원/손정습](https://github.com/heekyungdo)
 
-    5. [팀원/손정습](https://github.com/heekyungdo)
-
-    -   담당역할 : 백엔드 개발 및 서비스 기획 총괄
-    -   업무내용 :
-        1. 서버사이드 아키텍쳐 설계
-        2. MongoDB, MariaDB CRUD 개발
-        3. AWS S3, RDS 인프라 도입
-        4. DID 서비스 및 시스템 모델 기획
-        5. 서비스 최종 프레젠테이션 작성 및 발표
+-   담당역할 : 백엔드 개발 및 서비스 기획 총괄
+-   업무내용 :
+    1. 서버사이드 아키텍쳐 설계
+    2. MongoDB, MariaDB CRUD 개발
+    3. AWS S3, RDS 인프라 도입
+    4. DID 서비스 및 시스템 모델 기획
+    5. 서비스 최종 프레젠테이션 작성 및 발표
 
 ---
 
@@ -89,13 +88,13 @@ DID, Decentralized ID는 프로젝트는 사용자의 개인정보를 개인이 
 #### 시스템 아키텍쳐
 
 <p align='center'>
-<img src="./presentation/weDIDsurvey_systemArchitecture.png"></img>
+<img src="./presentation/weDIDsurvey-systemArchitecture.png"></img>
 </p>
 
 #### 기술스택 정의서
 
 <p align='center'>
-<img src="./presentation/weDIDsurvey_technologyStack.png"></img>
+<img src="./presentation/weDIDsurvey-technologyStack.png"></img>
 </p>
 
 #### 프로세스 플로우
@@ -105,19 +104,36 @@ DID, Decentralized ID는 프로젝트는 사용자의 개인정보를 개인이 
 </p>
 
 #### 프로젝트 발표 및 개발시연 영상
+프로젝트 발표 영상
+[![개발시연영상](http://img.youtube.com/vi/QYNwbZHmh8g/0.jpg)](https://youtu.be/8o9mF4WWGT4)
 
-[![IU(아이유) _ Into the I-LAND](http://img.youtube.com/vi/QYNwbZHmh8g/0.jpg)](https://youtu.be/QYNwbZHmh8g?t=0s)
-[![Video Label]](https://www.youtube.com/watch?v=XvaYc2APpUk)
+개발시연 영상
+[![발표영상](http://img.youtube.com/vi/QYNwbZHmh8g/0.jpg)](https://www.youtube.com/watch?v=nL_PmVUUizA&t=503s)
 
 ---
 
 #### 참고자료
 
--   ERC-721 - 스마트 컨트랙트 인터페이스
-    (https://docs.openzeppelin.com/contracts/4.x/erc721)
+-   도서 - 자기주권 신원증명 구조 분석서
+    (https://book.naver.com/bookdb/book_detail.nhn?bid=16388829)
 
--   PINATA IPFS : How to pin to IPFS effortlessly
-    (https://medium.com/pinata/how-to-pin-to-ipfs-effortlessly-ba3437b33885)
+-   DID 표준 - W3C, Decentralized Identifiers (DIDs) v1.0
+    (https://w3c.github.io/did-core/)
 
--   DAPP tutorial : 리액트로 구현하는 블록체인 이더리움 ERC721(NFT)
-    (https://www.inflearn.com/course/erc-721/dashboard)
+-   DID 표준 국문 - SSImeetupkorea, 검증가능한 크리덴셜 데이터 모델
+    (https://ssimeetupkorea.github.io/vc-data-model/#credentials)
+
+-   EIP - EIP-1056, Ethereum Lightweight Identity
+    (https://eips.ethereum.org/EIPS/eip-1056)
+    
+ -  DID registry - Ethereum DID Registry, uport project
+    (https://github.com/uport-project/ethr-did-registry)
+
+ -  ethr did libraray - Ethr-DID Library, uport project
+    (https://github.com/uport-project/ethr-did)
+    
+ -  Encrypt&Decrypt method - Metamasek rpc methods, eth_getEncryptionPublicKey & eth_decrypt
+    (https://docs.metamask.io/guide/rpc-api.html#other-rpc-methods)
+    
+ -  국내 DID 도입현황 - 팩트경제신문, 차세대 신원확인 기술 ‘DID’를 주목하라
+    (https://www.comworld.co.kr/news/articleView.html?idxno=49899)
