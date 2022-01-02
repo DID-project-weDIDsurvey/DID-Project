@@ -23,6 +23,7 @@ DID, Decentralized ID는 프로젝트는 사용자의 개인정보를 개인이 
 블록체인을 통한 탈중앙화 신원증명으로 마이데이터를 가능하게 하며, 신원인증 시 필요한 정보(VP)만을 골라서 제출하도록 합니다. 해당 기술을 활용해 저희 팀은 안전한 개인정보 자기관리와 안전한 개인정보 전달을 실현하고자 하며, 쉬운 패널자격검증이 가능함을 입증하려고 합니다.
 
 ### 팀명 : 딩딩(DIng DIng)
+
 ### 팀원 소개
 
 1. [PM/도희경](https://github.com/heekyungdo)
@@ -104,11 +105,16 @@ DID, Decentralized ID는 프로젝트는 사용자의 개인정보를 개인이 
 </p>
 
 #### 프로젝트 발표 및 개발시연 영상
+
 프로젝트 발표 영상
-[![개발시연영상](http://img.youtube.com/vi/QYNwbZHmh8g/0.jpg)](https://youtu.be/8o9mF4WWGT4)
+
+<iframe width="560" height="315" src="https://youtu.be/8o9mF4WWGT4" frameborder="0" allowfullscreen></iframe>
+
+프로젝트 발표 영상
+[![개발시연영상](./presentation/presentation_cover.png)](https://youtu.be/8o9mF4WWGT4)
 
 개발시연 영상
-[![발표영상](http://img.youtube.com/vi/QYNwbZHmh8g/0.jpg)](https://www.youtube.com/watch?v=nL_PmVUUizA&t=503s)
+[![발표영상](./presentation/mainpage_cover.png)](https://www.youtube.com/watch?v=nL_PmVUUizA&t=503s)
 
 ---
 
@@ -125,15 +131,12 @@ DID, Decentralized ID는 프로젝트는 사용자의 개인정보를 개인이 
 
 -   EIP - EIP-1056, Ethereum Lightweight Identity
     (https://eips.ethereum.org/EIPS/eip-1056)
-    
- -  DID registry - Ethereum DID Registry, uport project
+-   DID registry - Ethereum DID Registry, uport project
     (https://github.com/uport-project/ethr-did-registry)
 
- -  ethr did libraray - Ethr-DID Library, uport project
+-   ethr did libraray - Ethr-DID Library, uport project
     (https://github.com/uport-project/ethr-did)
-    
- -  Encrypt&Decrypt method - Metamasek rpc methods, eth_getEncryptionPublicKey & eth_decrypt
+-   Encrypt&Decrypt method - Metamasek rpc methods, eth_getEncryptionPublicKey & eth_decrypt
     (https://docs.metamask.io/guide/rpc-api.html#other-rpc-methods)
-    
- -  국내 DID 도입현황 - 팩트경제신문, 차세대 신원확인 기술 ‘DID’를 주목하라
+-   국내 DID 도입현황 - 팩트경제신문, 차세대 신원확인 기술 ‘DID’를 주목하라
     (https://www.comworld.co.kr/news/articleView.html?idxno=49899)
