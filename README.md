@@ -108,7 +108,11 @@ DID, Decentralized ID는 프로젝트는 사용자의 개인정보를 개인이 
 
 프로젝트 발표 영상
 
-{% include presentation.html id="nL_PmVUUizA" %}
+{% include ./_includes/presentation.html id="nL_PmVUUizA" %}
+
+<p align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nL_PmVUUizA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
 
 프로젝트 발표 영상
 [![개발시연영상](./presentation/presentation_cover.png)](https://youtu.be/8o9mF4WWGT4)
