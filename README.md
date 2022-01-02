@@ -11,6 +11,11 @@
 
     2. Validator(설문의뢰업체) 입장에서의 설문에 참여한 패널들의 VP(검증가능한 프레젠테이션)을 블록체인 스마트 컨트랙트를 통해 검증
 
+<p align='center'>
+<img src="./presentation/mainpage_cover.png"></img>
+프로젝트 메인 페이지 샘플
+</p>
+
 ### 프로젝트 설명
 
 **1. 서비스 설명**  
@@ -107,18 +112,10 @@ DID, Decentralized ID는 프로젝트는 사용자의 개인정보를 개인이 
 #### 프로젝트 발표 및 개발시연 영상
 
 프로젝트 발표 영상
+[![](http://img.youtube.com/vi/nL_PmVUUizA/0.jpg)](https://www.youtube.com/watch?v=nL_PmVUUizA "프로젝트발표시연영상")
 
-{% include ./_includes/presentation.html id="nL_PmVUUizA" %}
-
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nL_PmVUUizA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-
-프로젝트 발표 영상
-[![개발시연영상](./presentation/presentation_cover.png)](https://youtu.be/8o9mF4WWGT4)
-
-개발시연 영상
-[![발표영상](./presentation/mainpage_cover.png)](https://www.youtube.com/watch?v=nL_PmVUUizA&t=503s)
+개발 시연 영상
+[![](http://img.youtube.com/vi/8o9mF4WWGT4/0.jpg)](https://www.youtube.com/watch?v=8o9mF4WWGT4 "개발 시연 영상")
 
 ---
 
